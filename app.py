@@ -32,7 +32,7 @@ with st.sidebar:
     st.markdown("""
 
     When you input an image (via webcam or upload) into my application, the image is resized + converted
-    into an array of numbers. That array of numbers is given to the neural network, which outputs a prediction
+    into an array of numbers. That array of numbers is given a convolutional neural network, which outputs a prediction
     from 0-1 on whether a fruit is fresh/rotten. I then display that information to the user in a simplified
     form.
 
