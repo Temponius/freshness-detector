@@ -45,7 +45,11 @@ with st.sidebar:
     reliable when dealing with exotic/otherwise excluded fruits. Machine learning is very slow when
     you do not have access to a quality GPU, so I tried my best to balance adding new things with having
     a finished product at the end. I also included a fruit indicator in this app, so you know what the AI
-    thinks the fruit is as well as the freshness level.
+    thinks the fruit is combined with the freshness level.   \n
+    
+    Supported fruits: "Apple", "Banana", "Bell Pepper", "Bitter Gourd", "Carrot", "Cucumber",
+    "Grape", "Grapes", "Guava", "Jujube", "Kaki", "Lime", "Mango", "Orange",
+    "Papaya", "Peach", "Pear", "Pomegranate", "Potato", "Strawberry", "Tomato", and "Watermelon"
                 
     """)
     st.write("---")
