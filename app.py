@@ -113,12 +113,16 @@ if picture is not None:
         st.write(f"**Fresh** {fresh_prob:.1f}%")
         st.write(f"**Rotten:** {rotten_prob:.1f}%")
         if fresh_prob > 90:
-            st.success("The fruit is most likely fresh.")
+            st.success("This fruit has a very high chance of being fresh!")
         elif fresh_prob > 75:
-            st.success("The fruit")
+            st.success("This fruit is most likely fresh.")
         elif fresh_prob > 50:
-            st.warning("The AI is leaning towards this fruit being fresh. Check before eating.")
+            st.warning("The AI is leaning towards this fruit being fresh. Double-check before eating.")
+        elif fresh_prob > 25:
+            st.warning("The AI is leaning towards this fruit being rotten. Double-check before throwing.")
+        elif fresh_prob > 10:
+            st.error("This fruit is most likely rotten.")
         else:
-            st.error("The fruit is likely rotten.")
+            st.error("This fruit has a very high chance of being rotten!")
         with st.expander("See raw neural network output"):
             st.code(prediction)
