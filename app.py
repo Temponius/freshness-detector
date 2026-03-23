@@ -71,7 +71,7 @@ with st.container(border=True):
         if input_mode == "Webcam":
             picture = st.camera_input("Take a photo!")
         else:
-            picture = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
+            picture = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg", "webp"])
 
 
 # BACK TO AI MODEL
