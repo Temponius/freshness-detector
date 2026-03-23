@@ -11,7 +11,7 @@ model = load()
 
 fruit_labels = [
     "Apple", "Banana", "Bell Pepper", "Bitter Gourd", "Carrot", "Cucumber",
-    "Grape", "Grapes", "Guava", "Jujube", "Kaki", "Lime", "Mango", "Orange",
+    "Grapefruit", "Grapes", "Guava", "Jujube", "Kaki", "Lime", "Mango", "Orange",
     "Papaya", "Peach", "Pear", "Pomegranate", "Potato", "Strawberry", "Tomato",
     "Watermelon"
 ]
@@ -20,67 +20,52 @@ fruit_labels = [
 # NOT PART OF ACTUAL PROGRAM
 
 with st.sidebar:
-    st.title("About My Project")
+    st.title("How to Use Fresh:Detect")
     st.markdown("""
 
-    This is the culmination of my AI freshness detector science fair project! It's a python program that uses
-    the streamlit library in order to make a webpage without having to use HTML or CSS. 
+    Take a picture of a fruit with your camera or upload an image from your device. 
+    The AI model will automatically identify the fruit in the photo and give percentages for Fresh and Rotten.
 
     """)
     st.write("---")
-    st.header("Project Overview")
+    st.header("Supported Fruits")
     st.markdown("""
 
-    When you input an image (via webcam or upload) into my application, the image is resized + converted
-    into an array of numbers. That array of numbers is given a convolutional neural network, which outputs a prediction
-    from 0-1 on whether a fruit is fresh/rotten. I then display that information to the user in a simplified
-    form.
-
-    """)
-    st.write("---")
-    st.header("Limitations")
-    st.markdown("""
-
-    My freshness detector AI is not perfect. I only trained it on 22 common fruits, so it is not
-    reliable when dealing with exotic/otherwise excluded fruits. Machine learning is very slow when
-    you do not have access to a quality GPU, so I tried my best to balance adding new things with having
-    a finished product at the end. I also included a fruit indicator in this app, so you know what the AI
-    thinks the fruit is combined with the freshness level.   \n
-    
-    Supported fruits: "Apple", "Banana", "Bell Pepper", "Bitter Gourd", "Carrot", "Cucumber",
-    "Grape", "Grapes", "Guava", "Jujube", "Kaki", "Lime", "Mango", "Orange",
-    "Papaya", "Peach", "Pear", "Pomegranate", "Potato", "Strawberry", "Tomato", and "Watermelon"
+    The following fruits are supported by Fresh:Detect:
+                
+    Apples, Bananas, Bell Peppers, Bitter Gourds, Carrots, Cucumbers, Grapefruit, Grapes,
+    Guavas, Jujubes, Kakis, Limes, Mangoes, Oranges, Papayas, Peaches, Pears, Pomegranates, Potatoes,
+    Strawberries, Tomatoes, and Watermelons.
                 
     """)
     st.write("---")
-    st.header("Model Statistics")
-    st.markdown("""
-    ```
-    **Dataset**  
-        Dataset size: 14,491 images  
-            - 4,831 used for training  
-            - 9,660 used for validation  
-    
-    **Training**  
-        Initial:  
-            - freshness_output_accuracy: 0.8987  
-            - freshness_output_loss: 0.2483  
-            - fruit_output_accuracy: 0.8487  
-            - fruit_output_loss: 0.5022  
-            - loss: 0.7505  
-        After Training:  
-            - freshness_output_accuracy: 0.9854  
-            - freshness_output_loss: 0.0409  
-            - fruit_output_accuracy: 0.9878  
-            - fruit_output_loss: 0.0370  
-            - loss: 0.0779
-        Validation accuracy & loss is excluded.
-    ```
-    """)
+    with st.expander("Show Model Statistics"):
+        st.header("Model Statistics")
+        st.markdown("""
+        ```
+        **Dataset**  
+            Dataset size: 14,491 images  
+                - 4,831 used for training  
+                - 9,660 used for validation  
+        
+        **Training**  
+            Initial:  
+                - freshness_output_accuracy: 0.8987  
+                - freshness_output_loss: 0.2483  
+                - fruit_output_accuracy: 0.8487  
+                - fruit_output_loss: 0.5022  
+                - loss: 0.7505  
+            After Training:  
+                - freshness_output_accuracy: 0.9854  
+                - freshness_output_loss: 0.0409  
+                - fruit_output_accuracy: 0.9878  
+                - fruit_output_loss: 0.0370  
+                - loss: 0.0779
+            Validation accuracy & loss is excluded.
+        ```
+        """)
 
-st.image("logo.png", caption="Fresh:Detect Logo")
-st.caption("a machine learning project by Brandon Chen")
-st.write("---")
+st.image("logo.png")
 with st.container(border=True):
         input_mode = st.radio("Input: ", ["Webcam", "Upload Image"])
         if input_mode == "Webcam":
@@ -111,9 +96,9 @@ if picture is not None:
     with st.container(border=True):
         st.subheader(f"Your Image")
         st.image(img_resized, width=300)
-        st.write(f"Fruit Identified: {identified_fruit}")
-        st.write(f"**Fresh** {fresh_prob:.1f}%")
-        st.write(f"**Rotten:** {rotten_prob:.1f}%")
+        st.write(f"**Fruit Indentified:**  {identified_fruit}")
+        st.write(f"**Fresh Percentage:** {fresh_prob:.1f}%")
+        st.write(f"**Rotten Percentage:** {rotten_prob:.1f}%")
         if fresh_prob > 90:
             st.success("This fruit has a very high chance of being fresh!")
         elif fresh_prob > 75:
