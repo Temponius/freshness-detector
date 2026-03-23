@@ -78,7 +78,7 @@ with st.sidebar:
     ```
     """)
 
-st.title("Fresh:Detect")
+st.image("logo.png", caption="Fresh:Detect Logo")
 st.caption("a machine learning project by Brandon Chen")
 st.write("---")
 with st.container(border=True):
@@ -90,8 +90,6 @@ with st.container(border=True):
 
 
 # BACK TO AI MODEL
-
-
 
 # all the actual AI stuff
 if picture is not None:
